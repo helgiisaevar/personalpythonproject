@@ -72,16 +72,16 @@ def main(data):
     e.print_inorder()
     return e
 
-# def lets_print_preorder(data):
-#     e = binary_tree()
-#     for i in data['numbers']:
-#         e.populate_tree(i)
-#     e.print_preorder()
-#     return e
+def get_preorder(data):
+    e = binary_tree()
+    for i in data['numbers']:
+        e.populate_tree(i)
+    e.print_preorder()
+    return e
     
-# def lets_print_postorder(data):
-#     e = binary_tree()
-#     for i in data['numbers']:
-#         e.populate_tree(i)
-#     e.print_postorder()
-#     return e
+def get_postorder(data):
+    e = binary_tree()
+    for i in data['numbers']:
+        e.populate_tree(i)
+    e.print_postorder()
+    return e

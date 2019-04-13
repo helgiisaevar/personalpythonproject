@@ -1,103 +1,34 @@
 # Personal python pjoect.
 
 
+The api holds information about binary tree and different kind of trees. It can print out Binary tree in roder, pre order and post order. 
 
-To install
+The side is created to combine what we have been learning in different courses and how to use that in real life. 
 
-pip install -r requeriments.txt
-
-sidan geymir upplysingar um binary tree og prentar ut mismunandi tre/in order, pre order og post order. 
-
-Sidan er buin til i theim tilgangi ad samtvinna tha afanga sem eg er i a thessari onn og auka thekkingu mina baedi a python og a REST api. 
-
-Get /tree/:name #geymir upplysingar um binary tree, birtir tre.
+We are planning on keep working on the side and make it even bigger. 
 
 
-
-# Project Title
-
-One Paragraph of project description goes here
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+The first step is to get flask and python-dotenv. You can get that from:
 
 ```
-Give the example
+pip install -r requriements.txt
 ```
 
-And repeat
+To run the code you run the command flaks run in your terminal:
 
 ```
-until finished
+flask run
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+## That is Flask?
+Flask is a microframework for Python based on Werkzeug. It has no database abstraction layer, form validation, or any other components where pre-existing third-party libraries provide common functions. However, Flask supports extensions that can add application features as if they were implemented in Flask itself. Extensions exist for object-relational mappers, form validation, upload handling, various open authentication technologies and several common framework related tools. Extensions are updated far more regularly than the core Flask program
 
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Helgi Sævar Þorsteinsson** - *Initial work* 
+* **Eirikur** - *Initial work* 
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
