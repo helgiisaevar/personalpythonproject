@@ -5,6 +5,10 @@ class Utils(object):
         '''
 
         if command == 'invalid-route':
-            return 'Route: "' + input + '" is invalid. \n Send a GET request to "/" to see instructions'
+            return ' Route: "' + input + '" is invalid or values are missing. Send a GET request to "/" to see instructions '
 
-        return ''
+        if command == 'invalid-req':
+            return 'This method is not supported on this endpoint. Try using: ' + input
+
+        return input
+

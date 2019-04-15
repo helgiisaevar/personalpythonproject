@@ -45,14 +45,27 @@ class binary_tree():
     def get_inorder(self):
         bag = []
         if self.root != None:
-            self._get_inorder(self.root)
+            self._get_inorder(self.root, bag)
+        return bag
 
-    def _get_inorder(self, node):
+    def _get_inorder(self, node, bag):
         if node == None:
             return
-        self._get_inorder(node.left)
-        print('{}'.format(node.data))
-        self._get_inorder(node.right)
+        self._get_inorder(node.left, bag)
+        bag.append(('{}'.format(node.data)))
+        self._get_inorder(node.right, bag)
+
+    def get_preorder(self):
+        bag = []
+        self._get_preorder(self.root, bag)
+        return bag
+
+    def _get_preorder(self, node, bag):
+        if node == None:
+            return
+        bag.append(('{}'.format(node.data)))
+        self._get_preorder(node.left, bag)
+        self._get_preorder(node.right, bag)
 
     def print_preorder(self):
         self._print_preorder(self.root)
@@ -63,6 +76,18 @@ class binary_tree():
         return '{}'.format(node.data)
         self._print_preorder(node.left)
         self._print_preorder(node.right)
+
+    def get_postorder(self):
+        bag = []
+        self._get_postorder(self.root, bag)
+        return bag
+
+    def _get_postorder(self, node, bag):
+        if node == None:
+            return
+        self._get_postorder(node.left, bag)
+        self._get_postorder(node.right, bag)
+        bag.append(('{}'.format(node.data)))
 
     def print_postorder(self):
         self._print_postorder(self.root)
@@ -79,25 +104,20 @@ class binary_tree():
         return ''
 
 
-def main(data):
-    e = binary_tree()
-    for i in data['numbers']:
-        e.populate_tree(i)
-    e.print_inorder()
-    return e
+def get_tree(data):
+    tree = binary_tree()
 
+    for i in data['numbers']:
+        tree.populate_tree(i)
+    
+    return tree
+
+def get_inorder(data):
+    return get_tree(data).get_inorder()
 
 def get_preorder(data):
-    e = binary_tree()
-    for i in data['numbers']:
-        e.populate_tree(i)
-    e.print_preorder()
-    return e
-
+    return get_tree(data).get_preorder()
 
 def get_postorder(data):
-    e = binary_tree()
-    for i in data['numbers']:
-        e.populate_tree(i)
-    e.print_postorder()
-    return e
+    return get_tree(data).get_postorder()
+    

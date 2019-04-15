@@ -1,7 +1,7 @@
 from flask import Flask, request
 from about.about import About
 from utils.utils import Utils
-from trees.binary import main as binaryTree
+from trees.binary import get_inorder as binary_inorder, get_preorder as binary_preorder, get_postorder as binary_postorder
 
 import json
 
@@ -10,9 +10,20 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def index():
-    # TODO tell here about this pojects and tell about the endpoints possible and what they do. make it look nice when you make requests
-    # Say again here all the endpoints you say in readme
-    return 'Python tree helper api \n /about_tree to get about tree. use /tree to do this and that'
+    # TODO, make better docs here below
+    return 'Python tree helper API: \n Routes: \n \t - GET: "/about" See what trees you can get information about \n \t - GET: "/about/:tree"  Get information about specific tree \n \t - POST: "/tree/:tree/:order"  Create a tree with body {"numbers": [1, 2, 3]} and receive it in respected order'
+
+
+@app.route('/about',  methods=['GET'])
+def about():
+    '''
+    Handler for the about route.
+    '''
+    possibleRoutes = ['binary', 'red-black', 'avl']
+    tmp = ''
+    for route in possibleRoutes:
+        tmp = route + ', ' + tmp
+    return 'Possible routes: ' + tmp
 
 
 @app.route('/about/<name>',  methods=['GET'])
@@ -28,50 +39,32 @@ def about_tree(name):
         return Utils.res('invalid-route', '/about/' + name)
 
 
-@app.route('/trees/<tree>', methods=['POST'])
-def createTree(tree):
+@app.route('/tree/<tree>/<order>', methods=['POST'])
+def createTree(tree, order):
     '''
-    We create trees
+    We create and order trees
     '''
-    if (tree == 'binary_tree'):
+
+    if (tree == 'binary'):
+
         data = json.loads(request.data)
-        tree = binaryTree(data)
-        print(str(tree))
-        return str({"tree": str(tree)})
+        if (order == 'inorder'):
+            return str(binary_inorder(data))
+        elif (order == 'preorder'):
+            return str(binary_preorder(data))
+        elif (order == 'postorder'):
+            return str(binary_postorder(data))
+        else:
+            return Utils.res('invalid-route', '/trees/' + tree)
+
     else:
         return Utils.res('invalid-route', '/trees/' + tree)
 
+
 @app.route('/', defaults={'path': ''})
-@app.route('/<path:path>', methods=['GET', 'POST'])
+@app.route('/<path:path>', methods=['GET'])
 def catch_all(path):
     '''
     Handler for all routes that fall through.
     '''
-    return Utils.res('invalid-route', "/" + path)
-
-
-''' @app.route('/tree/preorder', methods=['POST'])
-def preorder():
-    data = json.loads(request.data)
-    tree = get_preorder(data)
-    return 'tree'
-
-
-@app.route('/tree/postorder', methods=['POST'])
-def postorder():
-    data = json.loads(request.data)
-    tree = get_postorder(data)
-    return 'tree'
-
-
-@app.route('/tree/binary/<name>', methods=['GET', 'POST'])
-def indexff(name):
-    if request.method == 'POST':
-        return data
-    else:
-        try:
-            info = trees[name]
-        except:
-            info = 'This is not a recognised tree'
-        return info
- '''
+    return Utils.res('', 'This route or the HTTP call on this route was not recognized. Please see route "/" for help.')
