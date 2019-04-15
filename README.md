@@ -9,6 +9,15 @@ We are planning on keep working on the side and make it even bigger.
 
 
 
+
+TODO !!
+Add instructions below on how you send requests 
+to this api to get trhe trees
+have request endpoints to all the possible actoins !!
+Taka dæmi um hvernig body á ða vera í reqestum til að fá treð
+
+
+
 ### Installing
 
 The first step is to get flask and python-dotenv. You can get that from:
